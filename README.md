@@ -1,4 +1,4 @@
-# Resiliadata - 
+# Resiliadata 
 Um oferecimento Arthur Lorran
 
 ### 1. Entidades Necessárias
