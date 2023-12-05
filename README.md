@@ -33,4 +33,4 @@ Um oferecimento Arthur Lorran
 ### 3. Relacionamentos
 - EmpresasParceiras possui relação com TecnologiasEmpresas através de `id_empresa`.
 - Tecnologias possui relação com TecnologiasEmpresas através de `id_tecnologia`.
-- Colaboradores possui relação com EmpresasParceiras através de `id_empresa`.# Proj_Ind_3
+- Colaboradores possui relação com EmpresasParceiras através de `id_empresa`.
