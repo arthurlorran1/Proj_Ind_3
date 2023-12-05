@@ -1,0 +1,63 @@
+CREATE DATABASE IF NOT EXISTS negocio;
+USE negocio;
+
+-- Tabela para cadastro de empresas parceiras
+CREATE TABLE IF NOT EXISTS EmpresasParceiras (
+    id_empresa INT PRIMARY KEY AUTO_INCREMENT,
+    nome_empresa VARCHAR(100) NOT NULL,
+    endereco VARCHAR(255),
+    contato VARCHAR(50)
+);
+
+-- Tabela para cadastro de tecnologias
+CREATE TABLE IF NOT EXISTS Tecnologias (
+    id_tecnologia INT PRIMARY KEY AUTO_INCREMENT,
+    nome_tecnologia VARCHAR(50) NOT NULL,
+    area_tecnologia VARCHAR(50) NOT NULL -- Ex: webdev, dados, marketing, etc.
+);
+
+-- Tabela para registrar quais tecnologias as empresas estão utilizando
+CREATE TABLE IF NOT EXISTS TecnologiasEmpresas (
+    id_relacao INT PRIMARY KEY AUTO_INCREMENT,
+    id_empresa INT,
+    id_tecnologia INT,
+    FOREIGN KEY (id_empresa) REFERENCES EmpresasParceiras(id_empresa),
+    FOREIGN KEY (id_tecnologia) REFERENCES Tecnologias(id_tecnologia)
+);
+
+-- Tabela para cadastro de colaboradores
+CREATE TABLE IF NOT EXISTS Colaboradores (
+    id_colaborador INT PRIMARY KEY AUTO_INCREMENT,
+    nome_colaborador VARCHAR(100) NOT NULL,
+    cargo VARCHAR(50),
+    id_empresa INT,
+    FOREIGN KEY (id_empresa) REFERENCES EmpresasParceiras(id_empresa)
+);
+
+-- Inserir dados na tabela EmpresasParceiras
+INSERT INTO EmpresasParceiras (nome_empresa, endereco, contato)
+VALUES
+    ('Empresa A', 'Rua A, 123', '123-456-7890'),
+    ('Empresa B', 'Avenida B, 456', '987-654-3210');
+
+-- Inserir dados na tabela Tecnologias
+INSERT INTO Tecnologias (nome_tecnologia, area_tecnologia)
+VALUES
+    ('Tecnologia X', 'WebDev'),
+    ('Tecnologia Y', 'Dados');
+
+-- Inserir dados na tabela TecnologiasEmpresas
+INSERT INTO TecnologiasEmpresas (id_empresa, id_tecnologia)
+VALUES
+    (1, 1), -- Empresa A utiliza Tecnologia X
+    (2, 2); -- Empresa B utiliza Tecnologia Y
+
+-- Inserir dados na tabela Colaboradores
+INSERT INTO Colaboradores (nome_colaborador, cargo, id_empresa)
+VALUES
+    ('João Silva', 'Desenvolvedor', 1), -- João Silva trabalha na Empresa A
+    ('Maria Souza', 'Analista de Dados', 2); -- Maria Souza trabalha na Empresa B;
+
+    
+    
+
